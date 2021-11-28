@@ -1,4 +1,4 @@
-package com.example.primefaces.survey.persistence.entity;
+package com.example.survey.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.example.primefaces.survey.formhandling;
+package com.example.survey.formhandling;
 
 import lombok.Data;
 import lombok.Getter;

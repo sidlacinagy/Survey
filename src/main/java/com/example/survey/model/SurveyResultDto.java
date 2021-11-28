@@ -1,4 +1,4 @@
-package com.example.primefaces.survey.model;
+package com.example.survey.model;
 
 import lombok.Data;
 

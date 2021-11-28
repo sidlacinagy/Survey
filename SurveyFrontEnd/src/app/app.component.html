@@ -1,0 +1,32 @@
+<div id="body">
+    <div id="error"></div>
+    <form [formGroup]="form" (submit)="submitForm()">
+        <div id="usernamediv">
+            <label for="username" id="labelusername">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username:" (change)="changeUser($event)">
+        </div>
+        <div id="question">What's your favourite fast food chain?</div>
+        <label>
+    <input type="radio" id="KFC" value="KFC" name="result" (change)="changeResult($event)"/>
+    <span>KFC</span>
+  </label>
+        <label>
+    <input type="radio" id="Burger King" value="Burger King" name="result" (change)="changeResult($event)"/>
+    <span>Burger King</span>
+  </label>
+        <label>
+    <input type="radio" id="McDonalds" value="McDonalds" name="result" (change)="changeResult($event)"/>
+    <span>McDonalds</span>
+  </label>
+        <label>
+    <input type="radio" id="Subway" value="Subway" name="result" (change)="changeResult($event)"/>
+    <span>Subway</span>
+  </label>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <button id="results">View results</button>
+</div>
+
+
+<router-outlet></router-outlet>

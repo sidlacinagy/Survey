@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+#body {
     font-family: "Inter", sans-serif;
     color: #000021;
     font-size: calc(1em + 1vw);
@@ -12,6 +12,11 @@ body {
     text-align: center;
     width: 100vw;
     height: 100vh;
+}
+
+#error {
+    padding-top: 1em;
+    color: rgba(167, 13, 13, 0.65);
 }
 
 form {

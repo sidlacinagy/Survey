@@ -1,6 +1,6 @@
-package com.example.primefaces.survey.persistence.repository;
+package com.example.survey.persistence.repository;
 
-import com.example.primefaces.survey.persistence.entity.SurveyResult;
+import com.example.survey.persistence.entity.SurveyResult;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
