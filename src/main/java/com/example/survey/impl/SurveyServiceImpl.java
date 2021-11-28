@@ -1,12 +1,13 @@
-package com.example.primefaces.survey.impl;
+package com.example.survey.impl;
 
-import com.example.primefaces.survey.formhandling.Vote;
-import com.example.primefaces.survey.model.SurveyResultDto;
-import com.example.primefaces.survey.persistence.entity.SurveyResult;
-import com.example.primefaces.survey.persistence.repository.SurveyResultRepository;
+import com.example.survey.formhandling.Vote;
+import com.example.survey.model.SurveyResultDto;
+import com.example.survey.persistence.entity.SurveyResult;
+import com.example.survey.persistence.repository.SurveyResultRepository;
 
-import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,10 +18,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping
+@CrossOrigin
 public class SurveyServiceImpl {
 
 
     private SurveyResultRepository surveyResultRepository;
+
 
 
     public SurveyServiceImpl(SurveyResultRepository surveyResultRepository) {
@@ -28,16 +31,16 @@ public class SurveyServiceImpl {
     }
 
 
-    @PostMapping(path="/home")
-    public String saveSurveyResult(@ModelAttribute Vote vote) {
+    @PostMapping(path="/api/submit",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<?> saveSurveyResult(@ModelAttribute Vote vote) {
         SurveyResult surveyResult=ConvertDtoToObject(new SurveyResultDto(vote.getUsername(), vote.getResult()));
-        System.out.println(surveyResult);
         if(surveyResultRepository.findById(surveyResult.getUsername()).isPresent()){
-            return "You already completed this survey";
+            return new ResponseEntity<>("\"You already voted\"", HttpStatus.OK);
         }
         else {
             surveyResultRepository.save(surveyResult);
-            return "You successfully completed this survey";
+            return new ResponseEntity<>("\"Success\"", HttpStatus.OK);
         }
     }
 
