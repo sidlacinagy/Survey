@@ -4,17 +4,12 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {delay, Observable} from "rxjs";
 
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-
-
-
-
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
   form: FormGroup;
 
   constructor(public fb: FormBuilder, private httpClient: HttpClient) {
@@ -60,13 +55,20 @@ export class AppComponent implements OnInit {
       // @ts-ignore
       formData.append("username", this.form.get('username').value);
       // @ts-ignore
-      formData.append("surveyResult", this.form.get('result').value);
+      formData.append("result", this.form.get('result').value);
       console.log(formData.get("username"));
       console.log(formData.get("surveyResult"));
       let response =await this.httpClient.post<any>('http://localhost:8082/api/submit', formData)
         .pipe(delay(500))
         .toPromise();
-      console.log((<String>response));
+      if(<String>response=="You already voted"){
+        // @ts-ignore
+        document.getElementById("error").innerText = "You already voted"
+      }
+
+      else{
+        window.location.href = "result";
+      }
 
     }
 
@@ -74,4 +76,3 @@ export class AppComponent implements OnInit {
   }
 
 }
-

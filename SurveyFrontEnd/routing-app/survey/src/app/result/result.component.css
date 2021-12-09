@@ -1,0 +1,41 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+#body {
+  font-family: "Inter", sans-serif;
+  color: #000021;
+  font-size: calc(1em + 1vw);
+  background-color: #e6e6ef;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#title{
+  text-align: center;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+#results{
+
+}
+
+.result{
+margin:2em;
+}
+
+.key{
+  display: inline-block;
+
+}
+
+.value{
+  display: inline-block;
+  margin-left:0.3em;
+
+}
+
